@@ -40,7 +40,7 @@ def single(request, slug) :
     
     """A single article"""
     article = get_object_or_404(Article, slug=slug)
-    archive_dates = Article.objects.dates('date_publish','month', order='DESC')
+    archive_dates = Article.objects.datetimes('date_publish','month', order='DESC')
     categories = Category.objects.all()
     return render(
         request,
@@ -62,7 +62,7 @@ def date_archive(request, year, month) :
     month_range = calendar.monthrange(year, month)
     start = datetime.datetime(year=year, month=month, day=1)#.replace(tzinfo=utc)
     end = datetime.datetime(year=year, month=month, day=month_range[1])#.replace(tzinfo=utc)
-    archive_dates = Article.objects.dates('date_publish','month', order='DESC')
+    archive_dates = Article.objects.datetimes('date_publish','month', order='DESC')
     categories = Category.objects.all()
 
     # Pagination
@@ -93,7 +93,7 @@ def date_archive(request, year, month) :
 
 
 def category_archive(request, slug):
-    archive_dates = Article.objects.dates('date_publish','month', order='DESC')
+    archive_dates = Article.objects.datetimes('date_publish','month', order='DESC')
     categories = Category.objects.all()
     category = get_object_or_404(Category, slug=slug)
 
