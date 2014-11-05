@@ -10,21 +10,35 @@
 {% endblock %}
 
 {% block content %}
-<div class="row-fluid">
-    <div class="span9">
-        <h3>Blog Index</h3>
+<div>
+    <div class="col-md-10">
+        <h3>Index</h3>
         {% for item in articles %}
+            </br>
             <article class="news-item">
                 <h4 class="title"><a href="{% url 'blog:blog-article-single' slug=item.slug %}">{{ item.title }}</a></h4>
                 <div class="meta">{{ item.date_publish|date:"F j, Y" }}</div>
             </article>
         {% endfor %}
         
-        <!-- Pagination -->
+        <div class="pagination pull-right">
+            <span class="step-links">
+                {% if articles.has_previous %}
+                    <a href="?page={{ articles.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ articles.number }} of {{ articles.paginator.num_pages }}.
+                </span>
+
+                {% if articles.has_next %}
+                    <a href="?page={{ articles.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
         
     </div>
-    </br></br>
-    <div class="span3">
+    <div class="col-md-2">
         <ul class="nav nav-list">
         {% if archive_dates|length > 0 %}
             <li class="nav-header">Archive Dates</li>
@@ -39,5 +53,6 @@
         {% endif %}
         </ul>
     </div>
+
 </div>
 {% endblock %}

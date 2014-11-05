@@ -22,11 +22,7 @@
             
             <div class="container">
                 <div class="masthead">
-                    <ul class="nav nav-pills pull-right">
-                        <li{% if "/" == request.get_full_path %} class="active"{% endif %}><a href="/">Home</a></li>
-                        <li{% if "/blog/" == request.get_full_path %} class="active"{% endif %}><a href="{% url 'blog:blog-article-index' %}">Blog</a></li>
-                    </ul>
-                    <h3 class="muted">Example Site</h3>
+                    <h3 class="muted">Blog Site</h3>
                 </div>
                 {% block breadcrumb %}{% endblock %}
                 {% block content %}{% endblock%}

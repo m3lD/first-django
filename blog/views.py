@@ -23,7 +23,7 @@ def index(request) :
         articles = paginator.page(1)
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
-        articles = paginator.page(paginator.num_pages)
+        articles = paginator.page(paginator.num_pages) 
 
     return render(
         request,
@@ -60,8 +60,8 @@ def date_archive(request, year, month) :
     year = int(year)
     month = int(month)
     month_range = calendar.monthrange(year, month)
-    start = datetime.datetime(year=year, month=month, day=1)#.replace(tzinfo=utc)
-    end = datetime.datetime(year=year, month=month, day=month_range[1])#.replace(tzinfo=utc)
+    start = datetime.datetime(year=year, month=month, day=1)
+    end = datetime.datetime(year=year, month=month, day=month_range[1])
     archive_dates = Article.objects.datetimes('date_publish','month', order='DESC')
     categories = Category.objects.all()
 
