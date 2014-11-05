@@ -36,8 +36,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'django.contrib.markdown',         # Markup editor/filter.
-    # 'django.contrib.comments',          # Comments for the blog
     'pagedown',                         # App for adding Markdown preview.
     'blog',                             # Blog app.
 )
