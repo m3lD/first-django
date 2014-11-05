@@ -8,7 +8,7 @@ import calendar, datetime
 
 def index(request) :
     
-    """The news index"""
+    """ The Index """
     archive_dates = Article.objects.datetimes('date_publish','month', order='DESC')
     categories = Category.objects.all()
 
@@ -110,6 +110,7 @@ def category_archive(request, slug):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         articles = paginator.page(paginator.num_pages)
+    
     return render(
         request,
         "blog/article/category_archive.html",
